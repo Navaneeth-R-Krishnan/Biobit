@@ -18,7 +18,7 @@ const Dashboard = () => {
     };
 
     try {
-      const response = await axios.get("http://localhost:3000/api/v1/dashboard", axiosConfig);
+      const response = await axios.get("http://localhost:5000/api/v1/dashboard", axiosConfig);
       setData({ msg: response.data.msg});
     } catch (error) {
       toast.error(error.message);
@@ -38,7 +38,7 @@ const Dashboard = () => {
   return (
     <div className='dashboard-main'>
       <h1>Welcome to BioBit!</h1>
-      <p>Hi { data.msg }!</p>
+      <p> { data.msg }!</p>
       <Link to="/logout" className="logout-button">Logout</Link>
     </div>
   )

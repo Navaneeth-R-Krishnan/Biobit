@@ -13,8 +13,9 @@ app.use(express.json());
 app.use(cors())
 app.use("/api/v1", mainRouter);
 app.use('/api/v1/qr', scanRoute);
+app.use('/api/auth', require('./routes/auth'));
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 const start = async () => {
 
