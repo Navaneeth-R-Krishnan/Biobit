@@ -1,0 +1,23 @@
+/* src/styles/RegulatoryDashboard.css */
+.dashboard-container {
+  padding: 20px;
+}
+
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dashboard-table th, .dashboard-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.dashboard-table th {
+  background-color: #f4f4f4;
+}
+
+.dashboard-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
