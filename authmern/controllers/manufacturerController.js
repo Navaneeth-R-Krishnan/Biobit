@@ -1,4 +1,5 @@
 // controllers/manufacturerController.js
+// This file is not for authentication, it is to add drug into the db
 const ManufacturerDrug = require('../models/ManufacturerDrug');
 
 exports.addDrugWithQR = async (req, res) => {
