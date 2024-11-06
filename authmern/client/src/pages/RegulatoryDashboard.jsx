@@ -5,13 +5,16 @@ import '../styles/RegulatoryDashboard.css';
 
 const RegulatoryDashboard = () => {
   const [drugs, setDrugs] = useState([]);
-  const [rejectionComment, setRejectionComment] = useState("");
 
   useEffect(() => {
     const fetchDrugs = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/v1/drugs/all');
-        setDrugs(response.data);
+        const drugsWithComment = response.data.map(drug => ({
+          ...drug,
+          rejectionComment: '', // Initialize rejection comment for each drug
+        }));
+        setDrugs(drugsWithComment);
       } catch (error) {
         console.error("Error fetching drugs:", error);
       }
@@ -25,20 +28,34 @@ const RegulatoryDashboard = () => {
       setDrugs((prevDrugs) =>
         prevDrugs.map((drug) => (drug._id === id ? { ...drug, status: "approved" } : drug))
       );
+      alert("Drug approved successfully!");
     } catch (error) {
       console.error("Error approving drug:", error);
+      alert("Error approving drug.");
     }
   };
 
-  const handleReject = async (id) => {
+  const handleReject = async (id, comment) => {
     try {
-      await axios.patch(`http://localhost:5000/api/v1/drugs/reject/${id}`, { comment: rejectionComment });
+      await axios.patch(`http://localhost:5000/api/v1/drugs/reject/${id}`, { comment });
       setDrugs((prevDrugs) =>
-        prevDrugs.map((drug) => (drug._id === id ? { ...drug, status: "rejected", rejectionComment } : drug))
+        prevDrugs.map((drug) => 
+          drug._id === id ? { ...drug, status: "rejected", rejectionComment: comment } : drug
+        )
       );
+      alert("Drug rejected successfully.");
     } catch (error) {
       console.error("Error rejecting drug:", error);
+      alert("Error rejecting drug.");
     }
+  };
+
+  const handleCommentChange = (id, value) => {
+    setDrugs((prevDrugs) =>
+      prevDrugs.map((drug) => 
+        drug._id === id ? { ...drug, rejectionComment: value } : drug
+      )
+    );
   };
 
   return (
@@ -69,19 +86,19 @@ const RegulatoryDashboard = () => {
                       style={{ color: "green", cursor: "pointer", marginRight: "10px" }}
                     />
                     <FaTimes
-                      onClick={() => handleReject(drug._id)}
+                      onClick={() => handleReject(drug._id, drug.rejectionComment)}
                       style={{ color: "red", cursor: "pointer" }}
                     />
                     <input
                       type="text"
                       placeholder="Rejection Comment"
-                      value={rejectionComment}
-                      onChange={(e) => setRejectionComment(e.target.value)}
+                      value={drug.rejectionComment}
+                      onChange={(e) => handleCommentChange(drug._id, e.target.value)}
                       style={{ marginLeft: "10px" }}
                     />
                   </>
                 ) : drug.status === "rejected" ? (
-                  <span>{drug.rejectionComment}</span>
+                  <span>{drug.rejectionComment || "Rejected"}</span>
                 ) : (
                   <span>Approved</span>
                 )}
