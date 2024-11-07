@@ -2,17 +2,12 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const manufacturerSchema = new mongoose.Schema({
-  uniqueId: {
-    type: String,
-    required: true,
-    unique: true,
-    match: /^DM\d{8}$/,
-  },
+  uniqueId: { type: String }, // Remove 'required: true'
   name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
+  email: { type: String, required: true },
   password: { type: String, required: true },
-  address: String,
-  contactNumber: String,
+  contactNumber: { type: String, required: true },
+  address: { type: String, default: "" } // Optional field
 });
 
 // Hash password before saving

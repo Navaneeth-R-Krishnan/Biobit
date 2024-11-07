@@ -12,24 +12,35 @@ const ManufacturerRegister = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
+  
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
-    let uniqueId = e.target.uniqueId.value;
+    let uniqueId = e.target.uniqueId.value;  // this is still being used on frontend
     let name = e.target.name.value;
     let email = e.target.email.value;
     let password = e.target.password.value;
     let confirmPassword = e.target.confirmPassword.value;
     let contactNumber = e.target.contactNumber.value;
-
+    let address = "";  // Assuming address is optional for now, add an empty string or actual data
+  
     if (uniqueId && name && email && password && confirmPassword && contactNumber) {
       if (password === confirmPassword) {
-        const formData = { uniqueId, name, email, password, contactNumber };
+        const formData = { 
+          id: uniqueId,  // Change `uniqueId` to `id` to match the backend field
+          name,
+          email,
+          password,
+          address,  // Include address, even if empty
+          contactNumber 
+        };
+  
         try {
-          await axios.post("http://localhost:5000/api/auth/register/manufacturer", formData);
+          await axios.post("http://localhost:5000/api/v1/register/manufacturer", formData);  // Ensure correct endpoint
           toast.success("Manufacturer registration successful");
           navigate("/login");
         } catch (err) {
-          toast.error(err.message);
+          console.error("Error response:", err.response?.data || err.message);
+          toast.error("Registration failed. Please try again.");
         }
       } else {
         toast.error("Passwords don't match");
