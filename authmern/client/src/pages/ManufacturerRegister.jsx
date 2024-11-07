@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+
 const ManufacturerRegister = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -76,7 +77,7 @@ const ManufacturerRegister = () => {
             </form>
           </div>
           <p className="login-bottom-p">
-            Already registered? <Link to="/login">Login</Link>
+            Already registered? <Link to="/manulogin">Login</Link>
           </p>
         </div>
       </div>
