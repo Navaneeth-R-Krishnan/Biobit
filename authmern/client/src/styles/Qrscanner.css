@@ -1,25 +1,24 @@
 /* src/styles/QrScanner.css */
 
 .qr-scanner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    margin: 0 auto;
-    max-width: 400px;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .qr-scanner h2 {
-    color: #2c5282;
-    font-size: 1.8rem;
-  }
-  
-  .qr-scanner p {
-    margin-top: 10px;
-    color: #4a5568;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.qr-scanner h2 {
+  color: #2c5282;
+  font-size: 1.8rem;
+}
+
+.qr-scanner p {
+  margin-top: 10px;
+  color: #4a5568;
+}
