@@ -29,10 +29,7 @@ const router = createBrowserRouter([
         path: "logout",
         element: <Logout />,
       },
-      {
-        path: "qrscanner",
-        element: <Qrscanner />,
-      },
+      
     ],
   },
 ]);
