@@ -78,7 +78,7 @@ const RegulatoryRegister = () => {
             </form>
           </div>
           <p className="login-bottom-p">
-            Already registered? <Link to="/login">Login</Link>
+            Already registered? <Link to="/ralogin">Login</Link>
           </p>
         </div>
       </div>
