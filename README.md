@@ -3,3 +3,10 @@
 
 nvm use 20
 (this project uses node version of 20)
+
+
+in client repository also run the following command for installing the libararies for qrscanner:
+
+---> npm install html5-qrcode --legacy-peer-deps
+
+then run npm run dev 
