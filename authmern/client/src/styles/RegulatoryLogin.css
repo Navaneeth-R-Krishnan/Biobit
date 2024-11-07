@@ -1,0 +1,81 @@
+/* RegulatoryLogin.css */
+.regulatory-login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #4f0d0d;
+  padding: 20px;
+}
+
+.regulatory-login-container h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form input {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.login-form input:focus {
+  border-color: #3f9f71;
+  outline: none;
+}
+
+.login-form button {
+  padding: 12px;
+  font-size: 16px;
+  background-color: #3f9f71;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-form button:hover {
+  background-color: #2e7d53;
+}
+
+.login-form p {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-form p a {
+  color: #3f9f71;
+  text-decoration: none;
+}
+
+.login-form p a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .regulatory-login-container {
+    padding: 10px;
+  }
+
+  .login-form {
+    width: 90%;
+    padding: 20px;
+  }
+}
