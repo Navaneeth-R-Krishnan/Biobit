@@ -1,7 +1,9 @@
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Dashboard, HomeLayout, Landing, Login, Logout, Register } from "./pages";
+import { Dashboard, HomeLayout, Landing, Login, Logout, Register, Qrscanner, ManufacturerRegister, ManufacturerLogin, RALogin, RARegister, RADashboard } from "./pages";
 import { ToastContainer, toast } from 'react-toastify';
+
+
 
 
 const router = createBrowserRouter([
@@ -18,6 +20,10 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: "manulogin",
+        element: <ManufacturerLogin />,
+      },
+      {
         path: "register",
         element: <Register />,
       },
@@ -28,6 +34,26 @@ const router = createBrowserRouter([
       {
         path: "logout",
         element: <Logout />,
+      },
+      {
+        path: "qrscanner",
+        element: <Qrscanner />,
+      },
+      {
+        path: "manuregister",
+        element: <ManufacturerRegister />,
+      },
+      {
+        path: "ralogin",
+        element: <RALogin />,
+      },
+      {
+        path: "raregister",
+        element: <RARegister />,
+      },
+      {
+        path: "radashboard",
+        element: <RADashboard />,
       },
       
     ],
