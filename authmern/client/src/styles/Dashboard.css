@@ -5,7 +5,7 @@
   justify-content: center;
   min-height: 100vh;
   padding: 2rem;
-  color:#1e6ebe;
+  color:#060f03;
   text-align: center;
 }
 
@@ -41,3 +41,4 @@
 .logout-button:hover {
   background-color: #da190b;
 }
+
