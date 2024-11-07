@@ -1,6 +1,6 @@
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Dashboard, HomeLayout, Landing, Login, Logout, Register } from "./pages";
+import { Dashboard, HomeLayout, Landing, Login, Logout, Register, Qrscanner } from "./pages";
 import { ToastContainer, toast } from 'react-toastify';
 
 
@@ -33,6 +33,7 @@ const router = createBrowserRouter([
         path: "qrscanner",
         element: <Qrscanner />,
       },
+      
     ],
   },
 ]);

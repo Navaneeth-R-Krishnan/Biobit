@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Html5QrcodeScanner } from 'html5-qrcode';
+import React, { useState, useEffect } from "react";
+import { Html5QrcodeScanner } from "html5-qrcode";
+import "../styles/Qrscanner.css"
 
 function QrScanner() {
     const [drugDetails, setDrugDetails] = useState(null);
