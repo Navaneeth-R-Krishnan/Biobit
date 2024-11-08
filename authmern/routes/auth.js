@@ -8,6 +8,6 @@ router.post('/register/manufacturer', validateIdFormat('manufacturer'), register
 router.post('/register/regulatory', validateIdFormat('regulatory'), registerRegulatoryAuthority);
 
 // Login route
-router.post('/login', login);
+router.post('/manufacturer/login', login);
 
 module.exports = router;

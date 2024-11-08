@@ -5,6 +5,7 @@ module.exports = function (type) {
         if (type === 'manufacturer') {
             // Manufacturer ID should start with "DM" followed by 8 digits
             const manufacturerRegex = /^DM\d{8}$/;
+            //console.log(uniqueId);
             if (!manufacturerRegex.test(uniqueId)) { // Check uniqueId instead of id
                 return res.status(400).json({ message: 'Invalid manufacturer ID format'});
             }

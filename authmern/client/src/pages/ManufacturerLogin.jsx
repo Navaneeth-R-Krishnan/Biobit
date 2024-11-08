@@ -15,7 +15,7 @@ const ManufacturerLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/auth/login', { ...formData, role: 'manufacturer' });
+      const response = await axios.post('http://localhost:5000/api/v1//manufacturer/login', { ...formData, role: 'manufacturer' });
       alert('Manufacturer logged in successfully');
       // Save token to localStorage or context for future requests
       localStorage.setItem('token', response.data.token);

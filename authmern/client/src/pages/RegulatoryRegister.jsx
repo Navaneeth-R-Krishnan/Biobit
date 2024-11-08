@@ -25,7 +25,7 @@ const RegulatoryRegister = () => {
       if (password === confirmPassword) {
         const formData = { uniqueId, name, email, password, department, contactInfo };
         try {
-          await axios.post("http://localhost:5000/api/v1/register/manufacturer", formData);
+          await axios.post("http://localhost:5000/api/v1/register/regulatory", formData);
           toast.success("Regulatory authority registration successful");
           navigate("/login");
         } catch (err) {

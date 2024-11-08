@@ -26,7 +26,7 @@ const ManufacturerRegister = () => {
     if (uniqueId && name && email && password && confirmPassword && contactNumber) {
       if (password === confirmPassword) {
         const formData = { 
-          id: uniqueId,  // Change `uniqueId` to `id` to match the backend field
+          uniqueId,  // Change `uniqueId` to `id` to match the backend field
           name,
           email,
           password,
@@ -37,7 +37,7 @@ const ManufacturerRegister = () => {
         try {
           await axios.post("http://localhost:5000/api/v1/register/manufacturer", formData);  // Ensure correct endpoint
           toast.success("Manufacturer registration successful");
-          navigate("/login");
+          navigate("/manufacturer/login");
         } catch (err) {
           console.error("Error response:", err.response?.data || err.message);
           toast.error("Registration failed. Please try again.");

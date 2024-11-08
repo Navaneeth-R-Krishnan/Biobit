@@ -5,11 +5,12 @@ const bcrypt = require('bcrypt');
 
 exports.registerManufacturer = async (req, res) => {
   try {
-    const { id, name, email, password, contactNumber, address } = req.body;
+    const { uniqueId, name, email, password, contactNumber, address } = req.body;
+    //console.log(req.body);
 
     // Ensure 'address' can be optional (it can be an empty string if not provided)
     const newManufacturer = new Manufacturer({
-      uniqueId:id,  // Use the uniqueId from frontend
+      uniqueId,  // Use the uniqueId from frontend
       name,
       email,
       password,
@@ -27,10 +28,10 @@ exports.registerManufacturer = async (req, res) => {
 // Register Regulatory Authority
 exports.registerRegulatoryAuthority = async (req, res) => {
   try {
-      const { id, name, email, password, department, contactInfo } = req.body;
+      const { uniqueId, name, email, password, department, contactInfo } = req.body;
 
       const newRegulatoryAuthority = new RegulatoryAuthority({
-          uniqueId: id,  // Map `id` from the request body to `uniqueId`
+          uniqueId,  // Map `id` from the request body to `uniqueId`
           name,
           email,
           password,
