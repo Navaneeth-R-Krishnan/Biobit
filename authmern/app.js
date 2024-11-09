@@ -10,6 +10,7 @@ const mainRouter = require("./routes/user");
 const scanRoute = require("./routes/scanRoute")
 const drugsRoute = require("./routes/Drugs")
 const manufacturerRoute = require("./routes/manufacturerRoute")
+const regulatoryRoute = require('./routes/regulatoryRoutes')
 
 app.use(express.json());
 const cors = require('cors');
@@ -26,8 +27,9 @@ app.use(cors(corsOptions));
 app.use("/api/v1", mainRouter);
 app.use('/api/v1/qr', scanRoute);
 app.use('/api/v1', require('./routes/auth'));
-app.use('/api/v1/drugs', drugsRoute);
-app.use('/api/v1/manufacturer', manufacturerRoute);
+//app.use('/api/v1/drugs', drugsRoute);
+app.use('/api/v1', manufacturerRoute);
+app.use('/api/v1',regulatoryRoute);
 
 const port = process.env.PORT || 5000;
 

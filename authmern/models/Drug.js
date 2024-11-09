@@ -2,13 +2,17 @@
 const mongoose = require('mongoose');
 
 const drugSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  manufacturer: { type: String, required: true },
-  date: { type: Date, required: true },
-  status: {
-    type: String,
-    enum: ["pending", "approved", "rejected"],
-    default: "pending"
+  manufacturerId: { type: String, required: true },
+  drugName: { type: String, required: true },
+  qrCodeData: { type: String, required: true },  // base64-encoded QR data
+  productionDate: { type: Date, required: true },
+  expirationDate: { type: Date, required: true },
+  batchNumber: { type: String, required: true },
+  additionalInfo: { type: String },
+  status: { 
+    type: String, 
+    enum: ["pending", "approved", "rejected"], 
+    default: "pending" 
   },
   rejectionComment: { type: String }
 });

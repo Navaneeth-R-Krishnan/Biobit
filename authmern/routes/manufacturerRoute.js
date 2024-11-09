@@ -4,6 +4,6 @@ const { addDrugWithQR } = require('../controllers/manufacturerController');
 const router = express.Router();
 
 // Endpoint to add a new drug with QR code
-router.post('/add-drug', addDrugWithQR);
+router.post('/manufacturer/add-drug', addDrugWithQR);
 
 module.exports = router;

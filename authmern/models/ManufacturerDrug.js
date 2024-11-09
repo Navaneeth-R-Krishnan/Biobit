@@ -9,6 +9,12 @@ const manufacturerDrugSchema = new mongoose.Schema({
   expirationDate: { type: Date, required: true },
   batchNumber: { type: String, required: true },
   additionalInfo: { type: String },
+  status: { 
+    type: String, 
+    enum: ["pending", "approved", "rejected"], 
+    default: "pending" 
+  },
+  rejectionComment: { type: String }
 });
 
 module.exports = mongoose.model('ManufacturerDrug', manufacturerDrugSchema);
