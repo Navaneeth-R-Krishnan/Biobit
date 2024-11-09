@@ -27,7 +27,7 @@ const RegulatoryRegister = () => {
         try {
           await axios.post("http://localhost:5000/api/v1/register/regulatory", formData);
           toast.success("Regulatory authority registration successful");
-          navigate("/login");
+          navigate("/radashboard");
         } catch (err) {
           toast.error(err.message);
         }
