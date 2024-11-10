@@ -25,7 +25,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use("/api/v1", mainRouter);
-app.use('/api/v1/qr', scanRoute);
+app.use('/api/v1', scanRoute);
 app.use('/api/v1', require('./routes/auth'));
 //app.use('/api/v1/drugs', drugsRoute);
 app.use('/api/v1', manufacturerRoute);
