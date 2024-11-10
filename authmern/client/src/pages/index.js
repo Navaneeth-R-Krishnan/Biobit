@@ -10,4 +10,7 @@ export {default as ManufacturerLogin} from "./ManufacturerLogin";
 export {default as RALogin} from "./RegulatoryLogin";
 export {default as RARegister} from "./RegulatoryRegister";
 export {default as RADashboard} from "./RegulatoryDashboard";
+export {default as ManuDashboard} from "./ManufacturerDashboard";
+
+
 
