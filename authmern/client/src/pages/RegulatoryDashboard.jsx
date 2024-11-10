@@ -9,7 +9,7 @@ const RegulatoryDashboard = () => {
   useEffect(() => {
     const fetchDrugs = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/v1/drugs/all');
+        const response = await axios.get('http://localhost:5000/api/v1/drugs/');
         const drugsWithComment = response.data.map(drug => ({
           ...drug,
           rejectionComment: '', // Initialize rejection comment for each drug
@@ -74,9 +74,9 @@ const RegulatoryDashboard = () => {
         <tbody>
           {drugs.map((drug) => (
             <tr key={drug._id}>
-              <td>{drug.name}</td>
-              <td>{drug.manufacturer}</td>
-              <td>{new Date(drug.date).toLocaleDateString()}</td>
+              <td>{drug.drugName}</td>
+              <td>{drug.manufacturerId}</td>
+              <td>{new Date(drug.productionDate).toLocaleDateString()}</td>
               <td>{drug.status}</td>
               <td>
                 {drug.status === "pending" ? (
