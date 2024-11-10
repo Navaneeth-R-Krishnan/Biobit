@@ -1,24 +1,57 @@
-/* src/styles/QrScanner.css */
-
-.qr-scanner {
+.qr-scanner-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  padding: 20px;
-  margin: 0 auto;
-  width: 400px;
-  background: #270303;
+  margin-top: 20px;
+}
+
+#qr-reader {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.drug-details {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  margin-top: 20px;
 }
 
-.qr-scanner h2 {
-  color: #2c5282;
-  font-size: 1.8rem;
+.drug-details h2 {
+  color: #007bff;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
 }
 
-.qr-scanner p {
+.drug-details h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+}
+
+.drug-details p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.drug-details p strong {
+  color: #007bff;
+}
+
+.loading, .error {
+  color: #dc3545;
+  font-size: 1rem;
   margin-top: 10px;
-  color: #4a5568;
+  text-align: center;
 }

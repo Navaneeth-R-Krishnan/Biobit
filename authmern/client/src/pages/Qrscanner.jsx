@@ -15,7 +15,7 @@ function QrScanner() {
             // Encode the scanned QR data to base64
             const base64QrData = btoa(qrCodeMessage);
 
-            const response = await fetch('/api/drug-details', {
+            const response = await fetch('http://localhost:5000/api/v1/drug-details', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ qrCodeData: base64QrData })
@@ -49,12 +49,12 @@ function QrScanner() {
             {error && <p className="error">{error}</p>}
             {drugDetails && (
                 <div className="drug-details">
+                    <h2>The Drug</h2>
                     <h3>Drug Details</h3>
-                    <p><strong>Name:</strong> {drugDetails.name}</p>
-                    <p><strong>Manufacturer:</strong> {drugDetails.manufacturer}</p>
+                    <p><strong>Name:</strong> {drugDetails.drugName}</p>
+                    <p><strong>Manufacturer:</strong> {drugDetails.manufacturerId}</p>
                     <p><strong>Production Date:</strong> {drugDetails.productionDate}</p>
-                    <p><strong>Expiration Date:</strong> {drugDetails.expirationDate}</p>
-                    {/* Add more fields as needed */}
+                    <p><strong>Approval Date:</strong> {drugDetails.approvalDate}</p>
                 </div>
             )}
         </div>
