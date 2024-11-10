@@ -37,7 +37,7 @@ const ManufacturerRegister = () => {
         try {
           await axios.post("http://localhost:5000/api/v1/register/manufacturer", formData);  // Ensure correct endpoint
           toast.success("Manufacturer registration successful");
-          navigate("/manufacturer/login");
+          navigate("/manulogin");
         } catch (err) {
           console.error("Error response:", err.response?.data || err.message);
           toast.error("Registration failed. Please try again.");
