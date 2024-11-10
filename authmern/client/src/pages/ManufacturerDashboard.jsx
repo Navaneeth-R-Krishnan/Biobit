@@ -6,7 +6,7 @@ import "../styles/ManufacturerDashboard.css";
 
 function ManufacturerDashboard() {
     const [drugName, setDrugName] = useState("");
-    const [manufacturerUniqueId, setManufacturerUniqueId] = useState("");
+    const [manufacturerId, setManufacturerId] = useState("");  // Updated to match backend
     const [manufacturerName, setManufacturerName] = useState("");
     const [manufactureDate, setManufactureDate] = useState("");
     const [qrCodeData, setQrCodeData] = useState(null);
@@ -26,7 +26,7 @@ function ManufacturerDashboard() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!qrCodeData || !drugName || !manufacturerUniqueId || !manufacturerName || !manufactureDate) {
+        if (!qrCodeData || !drugName || !manufacturerId || !manufacturerName || !manufactureDate) {
             toast.error("Please fill in all fields and scan the QR code!");
             return;
         }
@@ -39,9 +39,9 @@ function ManufacturerDashboard() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     drugName,
-                    manufacturerUniqueId,
+                    manufacturerId,
                     manufacturerName,
-                    manufactureDate,
+                    productionDate: manufactureDate,
                     qrCodeData: base64QrCode
                 })
             });
@@ -50,7 +50,7 @@ function ManufacturerDashboard() {
 
             toast.success("Drug information saved successfully!");
             setDrugName("");
-            setManufacturerUniqueId("");
+            setManufacturerId("");
             setManufacturerName("");
             setManufactureDate("");
             setQrCodeData(null);
@@ -76,8 +76,8 @@ function ManufacturerDashboard() {
                     <label>Manufacturer Unique ID:</label>
                     <input
                         type="text"
-                        value={manufacturerUniqueId}
-                        onChange={(e) => setManufacturerUniqueId(e.target.value)}
+                        value={manufacturerId}
+                        onChange={(e) => setManufacturerId(e.target.value)}
                         required
                     />
                 </div>

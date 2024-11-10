@@ -6,8 +6,8 @@ const drugSchema = new mongoose.Schema({
   drugName: { type: String, required: true },
   qrCodeData: { type: String, required: true },  // base64-encoded QR data
   productionDate: { type: Date, required: true },
-  expirationDate: { type: Date, required: true },
-  batchNumber: { type: String, required: true },
+  expirationDate: { type: Date || " "},
+  batchNumber: { type: String ||" "},
   additionalInfo: { type: String },
   status: { 
     type: String, 
