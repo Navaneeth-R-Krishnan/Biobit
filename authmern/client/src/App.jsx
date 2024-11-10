@@ -1,6 +1,6 @@
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Dashboard, HomeLayout, Landing, Login, Logout, Register, Qrscanner, ManufacturerRegister, ManufacturerLogin, RALogin, RARegister, RADashboard } from "./pages";
+import { Dashboard, HomeLayout, Landing, Login, Logout, Register, Qrscanner, ManufacturerRegister, ManufacturerLogin, RALogin, RARegister, RADashboard, ManuDashboard } from "./pages";
 import { ToastContainer, toast } from 'react-toastify';
 
 
@@ -54,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "radashboard",
         element: <RADashboard />,
+      },
+      {
+        path: "manudashboard",
+        element: <ManuDashboard />,
       },
       
     ],
