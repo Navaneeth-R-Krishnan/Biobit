@@ -13,31 +13,36 @@ const RegulatoryRegister = () => {
 
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
-    let uniqueId = e.target.uniqueId.value;
-    let name = e.target.name.value;
-    let email = e.target.email.value;
-    let password = e.target.password.value;
-    let confirmPassword = e.target.confirmPassword.value;
-    let department = e.target.department.value;
-    let contactInfo = e.target.contactInfo.value;
-
-    if (uniqueId && name && email && password && confirmPassword && department && contactInfo) {
-      if (password === confirmPassword) {
-        const formData = { uniqueId, name, email, password, department, contactInfo };
-        try {
-          await axios.post("http://localhost:5000/api/v1/register/regulatory", formData);
-          toast.success("Regulatory authority registration successful");
-          navigate("/radashboard");
-        } catch (err) {
-          toast.error(err.message);
-        }
-      } else {
-        toast.error("Passwords don't match");
-      }
-    } else {
+    const formData = {
+      uniqueId: e.target.uniqueId.value,
+      name: e.target.name.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
+      confirmPassword: e.target.confirmPassword.value,
+      department: e.target.department.value,
+      contactInfo: e.target.contactInfo.value,
+    };
+  
+    if (Object.values(formData).some((field) => !field)) {
       toast.error("Please fill all fields");
+      return;
+    }
+  
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Passwords don't match");
+      return;
+    }
+  
+    try {
+      const response = await axios.post("http://localhost:5000/api/v1/register/regulatory", formData);
+      toast.success(response.data.message);
+      navigate("/radashboard");
+    } catch (err) {
+      const errorMessage = err.response?.data?.error || "Registration failed";
+      toast.error(errorMessage);
     }
   };
+  
 
   return (
     <div className="register-main">

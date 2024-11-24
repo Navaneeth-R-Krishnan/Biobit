@@ -26,23 +26,40 @@ exports.registerManufacturer = async (req, res) => {
 };
 
 // Register Regulatory Authority
+const authorizedIps = ['::1', '98.76.54.32']; // Replace with actual authorized IPs
+
 exports.registerRegulatoryAuthority = async (req, res) => {
   try {
-      const { uniqueId, name, email, password, department, contactInfo } = req.body;
+    const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    console.log(clientIp);
 
-      const newRegulatoryAuthority = new RegulatoryAuthority({
-          uniqueId,  // Map `id` from the request body to `uniqueId`
-          name,
-          email,
-          password,
-          department,
-          contactInfo
-      });
+    // Validate the IP
+    if (!authorizedIps.includes(clientIp)) {
+      return res.status(403).json({ error: 'Unauthorized IP address. Registration not allowed.' });
+    }
 
-      await newRegulatoryAuthority.save();
-      res.status(201).json({ message: 'Regulatory authority registered successfully' });
+    const { uniqueId, name, email, password, department, contactInfo } = req.body;
+
+    // Validate required fields
+    if (!uniqueId || !name || !email || !password || !department || !contactInfo) {
+      return res.status(400).json({ error: 'All fields are required.' });
+    }
+
+    // Save the regulatory authority details to the database
+    const newRegulatoryAuthority = new RegulatoryAuthority({
+      uniqueId,
+      name,
+      email,
+      password,
+      department,
+      contactInfo,
+    });
+
+    await newRegulatoryAuthority.save();
+    res.status(201).json({ message: 'Regulatory authority registered successfully' });
   } catch (error) {
-      res.status(400).json({ error: error.message });
+    console.error('Error during registration:', error);
+    res.status(500).json({ error: 'Failed to register regulatory authority' });
   }
 };
 
